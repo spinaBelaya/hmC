@@ -1,7 +1,6 @@
 #include<iostream>
 #include<cmath>
 #include<set>
-#include<vector>
 #include<algorithm>
 #include<cstdio>
 
@@ -12,7 +11,6 @@ double f(double x) {
     return -x * log(x);
 }
 
-double EPS = 0.0000001;
 
 int main() {
     freopen("func3.out", "w", stdout);
@@ -21,84 +19,69 @@ int main() {
     double x0, x1;
     cin >> m >> n >> x0 >> x1;
 
-    vector<vector<char>> a(n+1, vector<char>(m));
+    char a[n+1][m];
 
     double mx = f(x0);
     double mn = f(x0);
     double zeroPos = 0;
 
-    double val1 = f(x0);
-    bool flag = false;
-
     for (int i = 0; i < m; ++i) {
         auto val = f(x0 + (x1 - x0) / m * i);
-
-        if (((val1 < 0 && val >= 0) || (val1 > 0 && val >= 0)) && !flag) {
-            zeroPos = val;
-            flag = true;
-        }
-        mx = std::max(mx, val);
-        mn = std::min(mn, val);
-
+        mx = max(mx, val);
+        mn = min(mn, val);
     }
 
 
-
-    int zeroY = 0;
-
-
-    if (zeroPos <= mn) {
-        mn = zeroPos;
-        zeroY = n;
-    } else if (zeroPos >= mx && f(x1)==zeroPos) {
-        mx = zeroPos;
-        zeroY = n;}
-    else if (zeroPos >= mx) {
-        mx = zeroPos;
-        zeroY = 0;
-    } else {
-        zeroY = ((mx / (abs(mx) + abs(mn))) * (n + 1));
-
+    double zero_y;
+    double step_y;
+    
+    if (mn < 0 && mx < 0) {
+        step_y = abs(mn / n);
+        zero_y = 0;
+    }
+    if (mn > 0 && mx > 0) {
+        step_y = mx / n;
+        zero_y = n;
+    }
+    if (mx * mn < 0) {
+        step_y = (mx - mn) / n;
+        zero_y = round(mx / step_y);
+    }
+    if (mx == 0) {
+        zero_y = 0;
+        step_y = (mx - mn) / n;
+    }
+    if (mn == 0) {
+        zero_y = n;
+        step_y = (mx - mn) / n;
     }
 
 
-    double lastVal = f(x0);
-
-    bool dir = f(x0 + EPS) >= 0;
-    n++;
-
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j) {
-
-            if (i == zeroY) {
+    for (int i = 0; i <= n; i++) {
+        for (int j = 0; j < m; j++) {
+            double current_f = f(x0 + (x1 - x0) / m * j);
+            if (i == zero_y) {
                 a[i][j] = '-';
-                continue;
             }
-
-
-            auto val = f(x0 + (x1 - x0) / m * j);
-
-            if (lastVal * val < 0) {
-                dir = !dir;
-            }
-            auto diff = abs(val - mn) / abs(mx - mn);
-            diff *= n;
-            auto i1 = n - diff;
-
-
-            if ((i > zeroY && dir) || (i < zeroY && !dir)) {
-                a[i][j] = ' ';
-            } else {
-                if ((i >= i1 && dir) || (i <= i1 && !dir)) {
+            if (i > zero_y) {
+                if (((current_f < mx - step_y * i) && (mx >= 0)) ||
+                    ((current_f < 0 - step_y * i) && (mx < 0))) {
                     a[i][j] = '#';
                 } else {
                     a[i][j] = ' ';
                 }
             }
-            lastVal = val;
+            if (i < zero_y) {
+                if (((current_f < mx - step_y * i) && (mx >= 0)) ||
+                    ((current_f < 0 - step_y * i) && (mx < 0))) {
+                    a[i][j] = ' ';
+                } else {
+                    a[i][j] = '#';
+                }
+            }
         }
     }
-
+    
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < m; ++j) {
             cout << a[i][j];
