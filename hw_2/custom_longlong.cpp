@@ -122,8 +122,10 @@ std::ostream &operator<<(std::ostream &s, safe_l l1) {
 }
 
 std::istream &operator>>(std::istream &s, safe_l &l1) {
-    s >> l1;
-    return s;
+    long long num;
+    s >> num;
+    l1 = num;
+    return s; 
 }
 
 
