@@ -130,9 +130,11 @@ std::istream &operator>>(std::istream &s, safe_l &l1) {
 
 
 int main() {
-    safe_l l_1 = 10;
-    safe_l l_2 = 5;
-    std:: cout << l_1 + l_2;
+    safe_l l_1;
+    safe_l l_2;
+    std::cin >> l_1;
+    std::cin >> l_2;
+    std::cout <<"l_1 + l_2 = " << (l_1 + l_2);
     return 0;
 }
 
