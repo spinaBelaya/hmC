@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/HW_C/lab4_ket/game/game.cpp
+iostream
+-
+set
+-
+game.h
+C:/HW_C/lab4_ket/game/game.h
+
+C:/HW_C/lab4_ket/game/game.h
+memory
+-
+vector
+-
+../strategies/interface.h
+C:/HW_C/lab4_ket/strategies/interface.h
+structures.h
+C:/HW_C/lab4_ket/game/structures.h
+
+C:/HW_C/lab4_ket/game/structures.h
+algorithm
+-
+
+C:/HW_C/lab4_ket/strategies/interface.h
+../game/structures.h
+C:/HW_C/lab4_ket/game/structures.h
+iostream
+-
+set
+-
+

@@ -1,0 +1,9 @@
+C:/HW_C/lab4_ket/cmake-build-debug/CMakeFiles/teach_project.dir
+C:/HW_C/lab4_ket/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/HW_C/lab4_ket/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+C:/HW_C/lab4_ket/cmake-build-debug/strategies/CMakeFiles/edit_cache.dir
+C:/HW_C/lab4_ket/cmake-build-debug/strategies/CMakeFiles/strategies.dir
+C:/HW_C/lab4_ket/cmake-build-debug/strategies/CMakeFiles/rebuild_cache.dir
+C:/HW_C/lab4_ket/cmake-build-debug/game/CMakeFiles/game.dir
+C:/HW_C/lab4_ket/cmake-build-debug/game/CMakeFiles/edit_cache.dir
+C:/HW_C/lab4_ket/cmake-build-debug/game/CMakeFiles/rebuild_cache.dir

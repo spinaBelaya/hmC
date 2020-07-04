@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libgame.a  CMakeFiles/game.dir/game.cpp.obj
+C:\MinGW\bin\ranlib.exe libgame.a
